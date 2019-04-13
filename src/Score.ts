@@ -17,9 +17,13 @@ export class Score {
 
   // betCallback: (bet: number) => void
   public scoreHand(cards: Card[], state: GameState, callback: (int) => void) {
-    this.rankUrl + "?cards=" + JSON.stringify(cards)
-    get(this.rankUrl, {}, (result) => {
-      var rainman = <RainmanResult>JSON.parse(result.body.toString())
+    var url = this.rankUrl + "?cards=" + JSON.stringify(cards)
+    get(url, {}, (error, response, body) => {
+      if(error){
+        callback(0)
+      }
+
+      var rainman = <RainmanResult>JSON.parse(body.toString())
       if(rainman.rank > 0){
         callback(state.minimum_raise)
       } else {
