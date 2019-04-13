@@ -16,15 +16,15 @@ export interface Player {
 export class Player {
   public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
     this.gamestate = gameState
-    if(this.hole_cards.length == 0) {
-      gameState.players.forEach((player, index) => {
-        if(player.hole_cards != null) {
-          player.hole_cards.forEach( (card, _) => {
-            this.hole_cards.push(card);
-          })
-        }
-      })
-    }
+    // if(this.hole_cards.length == 0) {
+    //   gameState.players.forEach((player, index) => {
+    //     if(player.hole_cards != null) {
+    //       player.hole_cards.forEach( (card, _) => {
+    //         this.hole_cards.push(card);
+    //       })
+    //     }
+    //   })
+    // }
 
     // pre-flop strategy
     if (gameState.bet_index == 0) {
@@ -38,7 +38,8 @@ export class Player {
       var odds = handToOdds(player.hole_cards);
 
       if (gameState.current_buy_in > 50) {
-        this.bet(betCallback)
+        betCallback(0)
+        // this.bet(betCallback)
       } else {
         betCallback(gameState.minimum_raise)
       }
