@@ -1,5 +1,4 @@
 import { Card } from "./GameState";
-import { get } from "request";
 
 export interface RainmanResult {
   rank: number;
@@ -15,6 +14,5 @@ export class Score {
 
 
   public async scoreHand(cards: Card[], callback: (result: RainmanResult) => any) {
-    get(this.rankUrl, { qs: { cards: JSON.stringify(cards) } }, callback)
   }
 }
