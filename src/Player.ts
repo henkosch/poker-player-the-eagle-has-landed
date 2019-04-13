@@ -47,7 +47,7 @@ export function postFlopBet(gameState: GameState) {
   var player = gameState.players[gameState.in_action];
   var odds = handToOdds(player.hole_cards);
 
-  if (gameState.current_buy_in > 6 && odds < checkThreshold) return 0;
+  if (gameState.current_buy_in > 50 && odds < raiseThreshold) return 0;
   return gameState.minimum_raise;
 }
 
