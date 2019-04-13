@@ -11,6 +11,7 @@ export interface GameState {
     orbits: number;
     in_action: number;
     players: Player[];
+    community_cards: Card[];
 }
 
 interface Player {
@@ -20,9 +21,10 @@ interface Player {
     version: string;
     stack: number;
     bet: number;
+    hole_cards: Card[];
 }
 
-interface CommunityCard {
+interface Card {
     rank: string;
     suit: string;
 }
