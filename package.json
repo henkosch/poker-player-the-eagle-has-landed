@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "postinstall": "npm run build",
-        "start": "node out/index.js",
+        "start": "node out/src/index.js",
         "build": "tsc",
         "test": "mocha out/test/**/*.js"
     },
