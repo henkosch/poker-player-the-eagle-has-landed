@@ -34,15 +34,22 @@ export class Player {
 
     // post flop strategy
     if (gameState.bet_index > 0) {
-      this.bet(betCallback)
+      var player = gameState.players[gameState.in_action];
+      var odds = handToOdds(player.hole_cards);
+
+      if (gameState.current_buy_in > 50) {
+        this.bet(betCallback)
+      } else {
+        betCallback(gameState.minimum_raise)
+      }
     }
   }
 
   bet(callback) {
     if (this.gamestate.community_cards.length > 0) {
-        var cards = _.concat(this.hole_cards, this.gamestate.community_cards)
-        var s = new Score()
-        s.scoreHand(cards, this.gamestate, callback)
+      var cards = _.concat(this.hole_cards, this.gamestate.community_cards)
+      var s = new Score()
+      s.scoreHand(cards, this.gamestate, callback)
     } else {
       callback(0)
     }
@@ -67,6 +74,10 @@ export function preFlopBet(gameState: GameState) {
   } else {
     return 0;
   }
+}
+
+export function postFlopBet(gameState: GameState) {
+
 }
 
 export default Player;
