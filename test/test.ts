@@ -110,4 +110,35 @@ describe('CardScorer', () => {
 
     assert.equal(300, preFlopBet(gameState));
   });
+
+  it('postFlopBet shit cards', () => {
+    var gameState: GameState = {
+      tournament_id: null,
+      game_id: null,
+      round: null,
+      bet_index: 1,
+      small_blind: null,
+      current_buy_in: 300,
+      pot: 0,
+      minimum_raise: 100,
+      dealer: 0,
+      orbits: 0,
+      in_action: 0,
+      players: [{
+        id: 0,
+        name: null,
+        status: null,
+        version: null,
+        stack: 1000,
+        bet: 0,
+        hole_cards: [
+          { rank: "3", suit: "hearts"},
+          { rank: "5", suit: "spades"}
+        ]
+      }],
+      community_cards: []
+    };
+
+    assert.equal(0, preFlopBet(gameState));
+  });
 });

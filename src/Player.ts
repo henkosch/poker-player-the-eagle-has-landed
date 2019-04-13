@@ -17,7 +17,8 @@ export class Player {
 
     // post flop strategy
     if (gameState.bet_index > 0) {
-      betCallback(gameState.minimum_raise); // minimum raise
+      var bet = postFlopBet(gameState);
+      betCallback(bet);
     }
   }
 
@@ -40,6 +41,14 @@ export function preFlopBet(gameState: GameState) {
   } else {
     return 0;
   }
+}
+
+export function postFlopBet(gameState: GameState) {
+  var player = gameState.players[gameState.in_action];
+  var odds = handToOdds(player.hole_cards);
+
+  if (gameState.current_buy_in > 6 && odds < checkThreshold) return 0;
+  return gameState.minimum_raise;
 }
 
 export default Player;
