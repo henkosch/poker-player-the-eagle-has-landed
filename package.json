@@ -10,9 +10,11 @@
     },
     "dependencies": {
         "@types/lodash": "4.14.123",
+        "@types/request": "2.48.1",
         "body-parser": "1.18.3",
         "express": "4.16.4",
         "lodash": "4.17.11",
+        "request": "2.88.0",
         "typescript": "^1.8.10",
         "typings": "latest"
     },

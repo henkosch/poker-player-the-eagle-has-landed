@@ -24,7 +24,7 @@ interface Player {
     hole_cards: Card[];
 }
 
-interface Card {
+export interface Card {
     rank: string;
     suit: string;
 }
