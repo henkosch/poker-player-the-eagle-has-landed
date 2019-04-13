@@ -6,7 +6,8 @@
     "scripts": {
         "postinstall": "npm run build",
         "start": "node out/index.js",
-        "build": "./node_modules/.bin/typings i && ./node_modules/.bin/tsc -p ./"
+        "build": "tsc",
+        "test": "mocha out/test/**/*.js"
     },
     "dependencies": {
         "@types/lodash": "4.14.123",
@@ -15,11 +16,12 @@
         "express": "4.16.4",
         "lodash": "4.17.11",
         "request": "2.88.0",
-        "typescript": "^1.8.10",
-        "typings": "latest"
+        "typescript": "^3.4.3"
     },
-    "engines": {
-        "node": "4.4.7",
-        "npm": "3.10.5"
+    "devDependencies": {
+        "@types/chai": "4.1.7",
+        "@types/mocha": "5.2.6",
+        "chai": "4.2.0",
+        "mocha": "6.1.3"
     }
 }

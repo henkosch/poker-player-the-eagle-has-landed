@@ -1,4 +1,3 @@
-/// <reference path='../typings/index.d.ts'/>
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Player } from './Player';
@@ -27,7 +26,7 @@ app.post('/', (req, res) => {
     }
 });
 
-const port = parseInt(process.env['PORT'] || 1337);
+const port = parseInt(process.env['PORT'] || "1337");
 const host = "0.0.0.0";
 app.listen(port, host);
 console.log('Listening at http://' + host + ':' + port);
